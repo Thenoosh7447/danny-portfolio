@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Dhanush N Bhandarkar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2845 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Projects Section */
+        section {
+            margin: 4rem 0;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            animation: scaleUp 0.6s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-type {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            flex: 1;
+        }
+
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+
+        .highlight-feature {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .highlight-feature strong {
+            color: var(--success);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .project-link.secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .project-link.secondary:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlights h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .highlight-item h4 {
+            color: var(--accent-light);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .highlight-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DN</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Projects</h1>
+            <p>Real infrastructure built. Real problems solved. Real learning applied.</p>
+        </div>
+
+        <!-- Personal Projects Section -->
+        <section class="personal-projects">
+            <h2>🎯 Personal Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- AWS Multi-VPC Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type">Cloud Architecture</span>
+                        <div class="project-title">AWS Multi-VPC Architecture</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Built a production-grade multi-VPC architecture with proper isolation, load balancing, and secure communication patterns. This wasn't a tutorial — it was learning by doing, understanding each component's role.
+                        </p>
+                        
+                        <div class="highlight-feature">
+                            <strong>✨ Key Highlight:</strong> VPC Peering with route tables configured on both sides, allowing private subnets to communicate securely without exposing anything to the internet.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-label">Tech Stack</span>
+                            <div class="tech-tags">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">VPC</span>
+                                <span class="tech-tag">VPC Peering</span>
+                                <span class="tech-tag">ALB/NLB</span>
+                                <span class="tech-tag">EC2</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Nginx</span>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent); margin-top: 1rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Architecture Details:</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 1.25rem; line-height: 1.8;">
+                            <li><strong>Frontend VPC (10.0.0.0/24):</strong> Public ALB + Private EC2 with Nginx reverse proxy</li>
+                            <li><strong>Backend VPC (192.168.0.0/24):</strong> Private NLB + EC2 running Node.js API behind PM2</li>
+                            <li><strong>Security:</strong> Isolated security groups per layer, SG-to-SG rules, SSM VPC endpoints for bastion-less access</li>
+                            <li><strong>Cost Optimization:</strong> NAT Gateway created only when needed, deleted after updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlights">
+                <h3>🔧 Key Technical Achievements</h3>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>VPC Peering Configuration</h4>
+                        <p>Set up bi-directional VPC peering with proper route table entries and security group rules allowing inter-VPC communication while maintaining strict isolation.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Load Balancer Strategy</h4>
+                        <p>Implemented ALB in frontend for HTTP/HTTPS handling and NLB in backend for ultra-low latency API communication. Each optimized for its specific use case.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Security Hardening</h4>
+                        <p>Zero exposed instances. All EC2 instances in private subnets accessed via SSM without bastion hosts. Tight security group rules following least privilege principle.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Cost Consciousness</h4>
+                        <p>Lifecycle-managed NAT Gateway — only created during necessary operations, deleted immediately after. Demonstrates understanding of cloud economics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Projects Section -->
+        <section class="work-projects">
+            <h2>💼 Work Experience Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Infosys Service Desk -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type">Current Role</span>
+                        <div class="project-title">Global Service Desk Operations</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Night shift service desk engineer supporting a global clothing brand across 365-day operations. Working independently to handle infrastructure access, identity management, and incident escalation at enterprise scale.
+                        </p>
+                        
+                        <div class="highlight-feature">
+                            <strong>💡 Responsibility:</strong> Only support engineer on shift during night hours — every decision matters, proper documentation is critical.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-label">Tools & Systems</span>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Active Directory</span>
+                                <span class="tech-tag">Duo Security</span>
+                                <span class="tech-tag">MFA</span>
+                                <span class="tech-tag">Google Workspace</span>
+                                <span class="tech-tag">Cisco Meraki</span>
+                                <span class="tech-tag">ITSM Tools</span>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent); margin-top: 1rem; margin-bottom: 0.75rem; font-size: 0.95rem;">Core Responsibilities:</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 1.25rem; line-height: 1.8;">
+                            <li>Active Directory administration — account creation, password resets, group management</li>
+                            <li>MFA and Duo Security enrollment and troubleshooting</li>
+                            <li>Google Workspace and Cisco Meraki access provisioning</li>
+                            <li>Incident management and SLA compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Data Operations Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-type">Previous Role</span>
+                        <div class="project-title">Enterprise Sales Data Operations</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Built and maintained Excel-based reporting and analytics tools for a global sportswear brand's operations team. Owned data accuracy for reports used in business decision-making.
+                        </p>
+                        
+                        <div class="highlight-feature">
+                            <strong>🎯 Impact:</strong> If a number was wrong, the whole business decision could be wrong. Zero margin for error.
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-label">Skills Applied</span>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">Data Analysis</span>
+                                <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">QA</span>
+                                <span class="tech-tag">Documentation</span>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent); margin-top: 1rem; margin-bottom: 0.75rem; font-size: 0.95rem;">What I Built:</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 1.25rem; line-height: 1.8;">
+                            <li>Sales reporting dashboards for global operations visibility</li>
+                            <li>Automated data validation and reconciliation processes</li>
+                            <li>Comprehensive test case suites for data accuracy</li>
+                            <li>Documentation for data lineage and calculation methodology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlights" style="margin-top: 2rem;">
+                <h3>🏢 Professional Achievements</h3>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>Night Shift Mastery</h4>
+                        <p>4+ years of night shift work demonstrates discipline, time management, and ability to work independently under pressure without escalation fatigue.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Enterprise Scale Support</h4>
+                        <p>Managing infrastructure for global users across multiple brands with critical SLA requirements. Proven ability to handle complex systems and tight deadlines.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Data Integrity Focus</h4>
+                        <p>Previous role emphasized accuracy and accountability. Developed QA mindset and attention to detail that carries through all technical work.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Cross-Functional Collaboration</h4>
+                        <p>Worked with onshore teams, business stakeholders, and vendors. Strong documentation and communication skills developed through real-world experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Projects Section -->
+        <section class="learning-section">
+            <h2>📚 Currently Learning</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">These are the next frontiers — actively building and experimenting with:</p>
+            
+            <div class="highlights">
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>🐳 Docker & Containerization</h4>
+                        <p>Building containerized applications to understand image layers, registry management, and the foundation for Kubernetes orchestration.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>☸️ Kubernetes Orchestration</h4>
+                        <p>Moving from containers to orchestration — deployments, services, ingress, and managing stateful applications at scale.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🏗️ Infrastructure as Code (Terraform)</h4>
+                        <p>Replacing manual AWS setup with Terraform to understand version control, repeatable deployments, and infrastructure versioning.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🔄 CI/CD Pipelines</h4>
+                        <p>Building automated workflows from code commit to deployment. GitHub Actions for testing, building, and deploying without manual intervention.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dhanush N Bhandarkar. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Let's build something great together • dhanushbhandarkar47@gmail.com</p>
+    </footer>
+
+    <script>
+        // Set active nav link based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'projects.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

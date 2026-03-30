@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhanush N Bhandarkar - DevOps & Cloud Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2845 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-visual svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 4rem 0;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Work Experience */
+        .experience-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateX(5px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        .experience-duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .experience-location {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .education-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DN</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Dhanush N Bhandarkar</h1>
+                    <div class="title">IT Professional → DevOps & Cloud Engineer</div>
+                    <p>4+ years at Infosys building real infrastructure. Currently diving deep into cloud engineering, automation, and distributed systems. Night shift support engineer by day, hands-on learner by night.</p>
+                    
+                    <div class="contact-links">
+                        <a href="/cdn-cgi/l/email-protection#abcfc3cac5ded8c3c9c3cac5cfcad9c0cad99f9cebccc6cac2c785c8c4c6">📧 Email</a>
+                        <a href="https://linkedin.com/in/dhanush-n-bhandarkar" target="_blank">💼 LinkedIn</a>
+                        <a href="https://github.com/Thenoosh7447" target="_blank">🐙 GitHub</a>
+                        <a href="tel:+919480077447">📱 +91 9480077447</a>
+                    </div>
+                    
+                    <a href="projects.html" class="cta-button">View My Work →</a>
+                </div>
+                
+                <div class="hero-visual">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#10b981;stop-opacity:0.8" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="30" y="30" width="140" height="140" rx="10" fill="url(#grad1)" opacity="0.2"/>
+                        <circle cx="100" cy="60" r="15" fill="#3b82f6"/>
+                        <circle cx="60" cy="120" r="12" fill="#10b981"/>
+                        <circle cx="140" cy="120" r="12" fill="#10b981"/>
+                        <line x1="100" y1="75" x2="60" y2="110" stroke="#3b82f6" stroke-width="2"/>
+                        <line x1="100" y1="75" x2="140" y2="110" stroke="#3b82f6" stroke-width="2"/>
+                        <line x1="60" y1="130" x2="140" y2="130" stroke="#10b981" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Years at Infosys</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Learning Curve</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Night Shift Ready</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p>I'm an IT support engineer at Infosys with <span class="highlight">4+ years of experience</span> supporting global users on enterprise infrastructure. My day-to-day involves Active Directory, MFA, Duo Security, Cisco Meraki, and Google Workspace — all under pressure on a night shift operation.</p>
+                    <p>My real passion is <span class="highlight">cloud engineering and DevOps</span>. I'm not just reading tutorials — I'm building actual infrastructure. I've set up multi-VPC AWS architectures from scratch, configured load balancers, security groups, and VPC peering to understand how things really work.</p>
+                    <a href="projects.html" class="cta-button" style="margin-top: 1.5rem;">View DevOps & Cloud Projects →</a>
+                </div>
+                <div class="about-content">
+                    <p>Currently based in <span class="highlight">Mangaluru, Karnataka</span>, working a night shift role which gives me daytime to learn, build, and experiment. When I'm not diving into cloud infrastructure, you'll find me exploring new places, taking my motorcycle out for tours and rides, or caught up in the adrenaline of Formula 1 racing. I love the combination of technical challenges and adventure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section class="experience">
+            <h2>Work Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Systems Engineer — Service Desk Analyst</div>
+                        <div class="experience-company">Infosys Ltd. - A Global Clothing Brand</div>
+                    </div>
+                    <div class="experience-duration">2023 — Present</div>
+                </div>
+                <div class="experience-location">📍 Mangaluru, India</div>
+                <ul>
+                    <li>Night shift role supporting global users across a 365-day operation — usually the only one on, so I handle whatever comes in</li>
+                    <li>Day-to-day: Active Directory (account management, unlocks, resets), MFA/Duo Security enrollment and troubleshooting, Google Workspace and Cisco Meraki access management</li>
+                    <li>Log and track incidents in ITSM, ensuring nothing slips and SLAs are met</li>
+                    <li>Escalate unresolved issues to Tier 2/3 with proper documentation</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Senior Systems Associate — Data Operations Analyst</div>
+                        <div class="experience-company">Infosys Ltd. - A Global Sportswear Brand</div>
+                    </div>
+                    <div class="experience-duration">2021 — 2023</div>
+                </div>
+                <div class="experience-location">📍 Mangaluru, India</div>
+                <ul>
+                    <li>Built and maintained Excel-based sales reporting tools for the client's global operations team</li>
+                    <li>Wrote and executed test cases to verify data accuracy before reports went to business</li>
+                    <li>Collaborated with onshore teams to ensure deliverables matched business requirements</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <div class="education-degree">Bachelor of Computer Applications (BCA)</div>
+                <div class="education-school">Govinda Dasa College</div>
+                <div class="education-details">Graduated 2021 | 85% Score</div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills">
+            <h2>Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>☁️ Cloud & AWS</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">EC2</span>
+                        <span class="skill-tag">VPC</span>
+                        <span class="skill-tag">ALB</span>
+                        <span class="skill-tag">NLB</span>
+                        <span class="skill-tag">NAT Gateway</span>
+                        <span class="skill-tag">VPC Endpoints</span>
+                        <span class="skill-tag">Route Tables</span>
+                        <span class="skill-tag">Security Groups</span>
+                        <span class="skill-tag">SSM</span>
+                        <span class="skill-tag">IAM</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🌐 Networking</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">VPC Design</span>
+                        <span class="skill-tag">Subnetting</span>
+                        <span class="skill-tag">CIDR</span>
+                        <span class="skill-tag">VPC Peering</span>
+                        <span class="skill-tag">DNS</span>
+                        <span class="skill-tag">Load Balancing</span>
+                        <span class="skill-tag">Routing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🖥️ OS & Servers</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Linux (AL2023)</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Nginx</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>⚙️ Scripting & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">npm</span>
+                        <span class="skill-tag">PM2</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔄 CI/CD</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔐 Identity & Access</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">MFA</span>
+                        <span class="skill-tag">Duo Security</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">Cisco Meraki</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📋 ITSM</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Incident Management</span>
+                        <span class="skill-tag">SLA Compliance</span>
+                        <span class="skill-tag">Service Requests</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🚀 Currently Learning</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">CI/CD Pipelines</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dhanush N Bhandarkar. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Built with care • Hosted on AWS S3</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Set active nav link based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('acti
