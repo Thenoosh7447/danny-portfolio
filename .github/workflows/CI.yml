@@ -8,7 +8,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/5 * * * *"
       
 
 jobs:
@@ -24,8 +24,7 @@ jobs:
           node-version: '18'
 
       - name: Install HTML Hint
-        run:
-          npm install -g htmlhint
+        run: npm install -g htmlhint
 
       - name: Run HTML Linter
         run: htmlhint "**/*.html"
