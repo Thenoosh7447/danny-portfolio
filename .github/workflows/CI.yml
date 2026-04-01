@@ -20,5 +20,5 @@ jobs:
           npm install -g htmlhint
 
       - name: Run HTML Linter
-        run: echo "Ran Linter."
+        run: htmlhint "**/*.html"
           
