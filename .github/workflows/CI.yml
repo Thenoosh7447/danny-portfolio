@@ -2,10 +2,10 @@ name: CI HTML
 
 on:
   push:
-    branches:
-      - staging
+    branches: ["main"]
   pull_request:
     branches: ["main"]
+      
   workflow_dispatch:      
 
 jobs:
