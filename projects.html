@@ -434,7 +434,7 @@
 
         <!-- Personal Projects Section -->
         <section class="personal-projects">
-            <h2>🎯 Personal Projects</h2>
+            <h2>Personal Projects</h2>
             
             <div class="projects-grid">
                 <!-- AWS Multi-VPC Project -->
@@ -449,7 +449,7 @@
                         </p>
                         
                         <div class="highlight-feature">
-                            <strong>✨ Key Highlight:</strong> VPC Peering with route tables configured on both sides, allowing private subnets to communicate securely without exposing anything to the internet.
+                            <strong>Key Highlight:</strong> VPC Peering with route tables configured on both sides, allowing private subnets to communicate securely without exposing anything to the internet.
                         </div>
 
                         <div class="tech-stack">
@@ -477,7 +477,7 @@
             </div>
 
             <div class="highlights">
-                <h3>🔧 Key Technical Achievements</h3>
+                <h3>Key Technical Achievements</h3>
                 <div class="highlights-grid">
                     <div class="highlight-item">
                         <h4>VPC Peering Configuration</h4>
@@ -501,7 +501,7 @@
 
         <!-- Work Projects Section -->
         <section class="work-projects">
-            <h2>💼 Work Experience Projects</h2>
+            <h2>Work Experience Projects</h2>
             
             <div class="projects-grid">
                 <!-- Infosys Service Desk -->
@@ -516,11 +516,11 @@
                         </p>
                         
                         <div class="highlight-feature">
-                            <strong>💡 Responsibility:</strong> Only support engineer on shift during night hours — every decision matters, proper documentation is critical.
+                            <strong>Responsibility:</strong> Only support engineer on shift during night hours — every decision matters, proper documentation is critical.
                         </div>
 
                         <div class="tech-stack">
-                            <span class="tech-label">Tools & Systems</span>
+                            <span class="tech-label">Tools &amp; Systems</span>
                             <div class="tech-tags">
                                 <span class="tech-tag">Active Directory</span>
                                 <span class="tech-tag">Duo Security</span>
@@ -553,7 +553,7 @@
                         </p>
                         
                         <div class="highlight-feature">
-                            <strong>🎯 Impact:</strong> If a number was wrong, the whole business decision could be wrong. Zero margin for error.
+                            <strong>Impact:</strong> If a number was wrong, the whole business decision could be wrong. Zero margin for error.
                         </div>
 
                         <div class="tech-stack">
@@ -579,7 +579,7 @@
             </div>
 
             <div class="highlights" style="margin-top: 2rem;">
-                <h3>🏢 Professional Achievements</h3>
+                <h3>Professional Achievements</h3>
                 <div class="highlights-grid">
                     <div class="highlight-item">
                         <h4>Night Shift Mastery</h4>
@@ -603,25 +603,25 @@
 
         <!-- Learning Projects Section -->
         <section class="learning-section">
-            <h2>📚 Currently Learning</h2>
+            <h2>Currently Learning</h2>
             <p style="color: var(--text-secondary); margin-bottom: 2rem;">These are the next frontiers — actively building and experimenting with:</p>
             
             <div class="highlights">
                 <div class="highlights-grid">
                     <div class="highlight-item">
-                        <h4>🐳 Docker & Containerization</h4>
+                        <h4>Docker &amp; Containerization</h4>
                         <p>Building containerized applications to understand image layers, registry management, and the foundation for Kubernetes orchestration.</p>
                     </div>
                     <div class="highlight-item">
-                        <h4>☸️ Kubernetes Orchestration</h4>
+                        <h4>Kubernetes Orchestration</h4>
                         <p>Moving from containers to orchestration — deployments, services, ingress, and managing stateful applications at scale.</p>
                     </div>
                     <div class="highlight-item">
-                        <h4>🏗️ Infrastructure as Code (Terraform)</h4>
+                        <h4>Infrastructure as Code (Terraform)</h4>
                         <p>Replacing manual AWS setup with Terraform to understand version control, repeatable deployments, and infrastructure versioning.</p>
                     </div>
                     <div class="highlight-item">
-                        <h4>🔄 CI/CD Pipelines</h4>
+                        <h4>CI/CD Pipelines</h4>
                         <p>Building automated workflows from code commit to deployment. GitHub Actions for testing, building, and deploying without manual intervention.</p>
                     </div>
                 </div>
@@ -632,14 +632,13 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Dhanush N Bhandarkar. All rights reserved.</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem;">Let's build something great together • dhanushbhandarkar47@gmail.com</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Let's build something great together | dhanushbhandarkar47@gmail.com</p>
     </footer>
 
     <script>
-        // Set active nav link based on current page
         document.addEventListener('DOMContentLoaded', function() {
             const currentPage = window.location.pathname.split('/').pop() || 'projects.html';
-            document.querySelectorAll('.nav-links a').forEach(link => {
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
                 const href = link.getAttribute('href');
                 if (href === currentPage) {
                     link.classList.add('active');
