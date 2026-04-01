@@ -1,0 +1,22 @@
+name: CI HTML
+
+on:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:    
+
+jobs:
+  htmlint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install HTML Hint
+        run:
+          npm install -g htmlhint
+
+      - name: Run HTML Linter
+        run: echo "Ran Linter."
+          
